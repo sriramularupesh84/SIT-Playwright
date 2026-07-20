@@ -8,14 +8,15 @@ export class General extends Global{
     console.log("Application opened");
       }
 //Login to  Appliaction 
-async login(){
-    await this.page.locator(this.textbox_loginname).fill(this.userName);
-    await this.page.locator(this.textbox_password).fill(this.password);
+async login(userName: string = this.userName, password: string = this.password){
+    await this.page.locator(this.textbox_loginname).fill(userName);
+    await this.page.locator(this.textbox_password).fill(password);
+    await this.page.locator(this.button_login).click();
     await this.page.waitForTimeout(3000);
     }
 //Logout Application
 async logout(){
-    await this.page.locator(this.button_logout).click;
+    await this.page.locator(this.button_logout).click();
     console.log("Logout completed")
 }
 }
